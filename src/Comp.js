@@ -6,8 +6,7 @@ export default class Comp extends Component {
     constructor(props){
         super(props)
     }
-    render(props) {
-        //render always runs last like an annoying one upper
+    render() {
       
         return (
             <div>
