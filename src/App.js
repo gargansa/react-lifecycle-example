@@ -3,33 +3,21 @@ import './App.css';
 
 
 class App extends Component {
-  state = {
-    color: {// easier to setState of objects when they are in an object
-      s: 'rgb(255,255,255)',
-      cDM: 'rgb(255,255,255)',
+  state = {//initialize state
+    color: {//setting the colors to white initially
+      s: 'rgb(255,255,255)',//state color
+      cDM: 'rgb(255,255,255)',//component did mount color
     }
   }
 
   constructor() {
     super()
     console.log('Constructor Called')
-    this.state.color.s = this.randomColor()
+    this.state.color.s = this.randomColor()//chooses the random color happens before the component is displayed
 
     this.randomColor = this.randomColor.bind(this)
     this.functionToSetState = this.functionToSetState.bind(this)
     this.time = this.time.bind(this)
-  }
-  functionToSetState() {
-    this.setState(previousState => ({
-      color: {
-        ...previousState.color,
-        s: this.randomColor()
-      }
-    }
-    ))
-    // var dt = new Date( "December 25, 1995 23:15:20" );
-    var t = this.time()
-    console.log('setState Called' + t)
   }
 
   componentDidMount() {
@@ -37,7 +25,7 @@ class App extends Component {
     this.setState(previousState => ({
       color: {
         ...previousState.color,
-        cDM: previousState.color.s
+        cDM: previousState.color.s //changing componentDidMount color to State Color
       }
     }
     ))
@@ -59,7 +47,6 @@ class App extends Component {
     console.log('componentDidUpdate Called' + t)
   }
 
-
   render() {
     //render always runs last like an annoying one upper
     var t = this.time()
@@ -67,12 +54,32 @@ class App extends Component {
 
     return (
       <div>
-        <button onClick={this.functionToSetState} className="all" >
+        <button onClick={()=>{this.functionToSetState(this.randomColor())}} className="all" >
           <div className="state" style={{ backgroundColor: this.state.color.s }}>Click to setState Color</div>
           <div className="componentDidMount" style={{ backgroundColor: this.state.color.cDM }}>componentDidMount Color</div>
         </button>
+        
       </div>
     );
+  }
+
+
+
+
+
+  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Functions that are not lifecycle
+  functionToSetState(value) {
+    this.setState(previousState => ({
+      color: {
+        ...previousState.color, //... is spread operator idea is it auto completes the other variables
+        s: value // this is the value you change with input
+      }
+    }
+    ))
+
+    // var dt = new Date( "December 25, 1995 23:15:20" );
+    var t = this.time()
+    console.log('setState Called' + t)
   }
 
   randomColor() {//picks random color
@@ -82,12 +89,12 @@ class App extends Component {
     return `rgb(${r},${g},${b})`;
   }
 
-  time(){
+  time() {//just makes a string with current time for console logs
     var d = new Date();
     var h = d.getHours();
     var m = d.getMinutes();
     var s = d.getSeconds();
-    return " "+h+":"+m+":"+s
+    return " " + h + ":" + m + ":" + s
   }
 
 }

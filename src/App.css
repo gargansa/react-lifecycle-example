@@ -6,27 +6,20 @@
 }
 
 .state{
+  border: solid 1px black;
   width:50vw;
   height:25vh;
   text-align: center;
-  font-size: 1em;
+  font-size: 3em;
   font-weight: bold;
   
 }
 
 .componentDidMount{
+  border: solid 1px black;
   width:50vw;
   height:25vh;
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
 }
-
-.componentDidUpdate{
-  width:50vw;
-  height:25vh;
-}
-
-.render{
-  width:50vw;
-  height:25vh;
-}
-
-
