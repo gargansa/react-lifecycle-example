@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import Comp from './Comp.js';
 
 class App extends Component {
   state = {//initialize state
@@ -58,7 +58,7 @@ class App extends Component {
           <div className="state" style={{ backgroundColor: this.state.color.s }}>Click to setState Color</div>
           <div className="componentDidMount" style={{ backgroundColor: this.state.color.cDM }}>componentDidMount Color</div>
         </button>
-        
+        <Comp color={this.state.color}/>
       </div>
     );
   }

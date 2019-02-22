@@ -23,3 +23,12 @@
   font-size: 3em;
   font-weight: bold;
 }
+
+.comp{
+  border: solid 1px black;
+  width:50vw;
+  height:25vh;
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+}
